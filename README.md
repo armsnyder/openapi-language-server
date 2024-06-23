@@ -1,7 +1,9 @@
 # OpenAPI Language Server
 
-This is a language server for OpenAPI v3.0.0. It is based on the [Language
+This is a language server for OpenAPI v3. It is based on the [Language
 Server Protocol](https://microsoft.github.io/language-server-protocol/).
+
+[![asciicast](https://asciinema.org/a/v7etZb80HbYkKBQUa3dVSenPz.svg)](https://asciinema.org/a/v7etZb80HbYkKBQUa3dVSenPz)
 
 I created this language server because I do a lot of manual OpenAPI/Swagger
 file editing, and I wanted a quick way to jump to definitions and find
@@ -13,6 +15,7 @@ for schema validation and code completion, so these features are not a priority
 for me to implement in this language server.
 
 ## Features
+
 
 ### Language Features
 
