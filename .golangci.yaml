@@ -1,0 +1,125 @@
+# See https://golangci-lint.run/usage/configuration/
+
+linters:
+  disable-all: true
+  enable:
+    # See https://golangci-lint.run/usage/linters/
+    - asasalint # Check for pass []any as any in variadic func(...any).
+    - bodyclose # Checks whether HTTP response body is closed successfully.
+    - contextcheck # Check whether the function uses a non-inherited context.
+    - durationcheck # Check for two durations multiplied together.
+    - errcheck # Checks whether Rows.Err of rows is checked successfully.
+    - errchkjson # Checks types passed to the json encoding functions. Reports unsupported types and reports occations, where the check for the returned error can be omitted.
+    - errorlint # Errorlint is a linter for that can be used to find code that will cause problems with the error wrapping scheme introduced in Go 1.13.
+    - forbidigo # Forbids identifiers.
+    - gci # Gci controls Go package import order and makes it always deterministic.
+    - gocritic # Provides diagnostics that check for bugs, performance and style issues. Extensible without recompilation through dynamic rules. Dynamic rules are written declaratively with AST patterns, filters, report message and optional suggestion.
+    - godot # Check if comments end in a period.
+    - gosec # Inspects source code for security problems.
+    - gosimple # Linter for Go source code that specializes in simplifying code.
+    - govet # Vet examines Go source code and reports suspicious constructs, such as Printf calls whose arguments do not align with the format string.
+    - inamedparam # Reports interfaces with unnamed method parameters.
+    - ineffassign # Detects when assignments to existing variables are not used.
+    - mirror # Reports wrong mirror patterns of bytes/strings usage.
+    - musttag # Enforce field tags in (un)marshaled structs.
+    - nilerr # Finds the code that returns nil even if it checks that the error is not nil.
+    - nilnil # Checks that there is no simultaneous return of nil error and an invalid value.
+    - noctx # Finds sending http request without context.Context.
+    - nolintlint # Reports ill-formed or insufficient nolint directives.
+    - nosprintfhostport # Checks for misuse of Sprintf to construct a host with port in a URL.
+    - perfsprint # Checks that fmt.Sprintf can be replaced with a faster alternative.
+    - protogetter # Reports direct reads from proto message fields when getters should be used.
+    - reassign # Checks that package variables are not reassigned.
+    - revive # Fast, configurable, extensible, flexible, and beautiful linter for Go. Drop-in replacement of golint.
+    - staticcheck # It's a set of rules from staticcheck. It's not the same thing as the staticcheck binary. The author of staticcheck doesn't support or approve the use of staticcheck as a library inside golangci-lint.
+    - tenv # # Tenv is analyzer that detects using os.Setenv instead of t.Setenv since Go1.17.
+    - unconvert # Remove unnecessary type conversions.
+    - unused # Checks Go code for unused constants, variables, functions and types.
+
+linters-settings:
+  # See https://golangci-lint.run/usage/linters/#linters-configuration
+  forbidigo:
+    forbid:
+      - 'fmt\.Print.*' # Should be using a logger
+  gci:
+    sections:
+      - standard
+      - default
+      - prefix(github.com/armsnyder)
+  gocritic:
+    enabled-tags:
+      - performance
+      - opinionated
+      - experimental
+    disabled-checks:
+      - whyNoLint # False positives, use nolintlint instead
+  govet:
+    enable-all: true
+    disable:
+      - fieldalignment # Too struct
+  nolintlint:
+    require-specific: true
+  revive:
+    enable-all-rules: true
+    rules:
+      # See https://revive.run/r
+      - name: add-constant # too strict
+        disabled: true
+      - name: argument-limit # too strict
+        disabled: true
+      - name: cognitive-complexity
+        arguments:
+          - 30
+      - name: cyclomatic
+        arguments:
+          - 30
+      - name: file-header # too strict
+        disabled: true
+      - name: function-length
+        arguments:
+          - 50 # statements
+          - 0 # lines (0 to disable)
+      - name: function-result-limit # too strict
+        disabled: true
+      - name: import-shadowing # too strict, results in uglier code
+        disabled: true
+      - name: line-length-limit # too strict
+        disabled: true
+      - name: max-public-structs # too strict
+        disabled: true
+      - name: modifies-parameter # too strict
+        disabled: true
+      - name: modifies-value-receiver # too strict
+        disabled: true
+      - name: nested-structs # too strict
+        disabled: true
+      - name: package-comments # too strict
+        disabled: true
+      - name: unhandled-error
+        disabled: true # not as good as errcheck
+
+issues:
+  exclude-rules:
+    - path: _test\.go$
+      linters:
+        - gosec # too strict
+        - noctx # too strict
+    - path: _test\.go$
+      text: (cognitive-complexity|function-length|dot-imports|import-alias-naming) # too strict
+      linters:
+        - revive
+    # main.go is allowed to contain early bootstrapping print statements.
+    # TestMain is allowed to log.
+    - path: \/main(_test)?\.go$
+      text: fmt.Print
+      linters:
+        - forbidigo
+    # Shadowing err is common.
+    - text: 'shadow: declaration of "err"'
+      linters:
+        - govet
+    - text: "^exported:.+stutters" # too strict and gets in the way of combining types like handlers
+      linters:
+        - revive
+    - path: _test\.go$
+      text: "unused-parameter" # too strict
