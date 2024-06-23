@@ -16,7 +16,6 @@ for me to implement in this language server.
 
 ## Features
 
-
 ### Language Features
 
 - [x] Jump to definition
@@ -36,9 +35,17 @@ for me to implement in this language server.
 
 ## Installation
 
+### Using Go
+
 ```bash
 go install github.com/armsnyder/openapiv3-lsp@latest
 ```
+
+### From GitHub Releases
+
+Download the latest release from [GitHub releases](https://github.com/armsnyder/openapiv3-lsp/releases).
+
+## Usage
 
 ### Neovim Configuration Example
 
@@ -52,6 +59,7 @@ your PATH, you can use the following Lua code to your Neovim configuration:
         vim.lsp.start {
           cmd = { 'openapiv3-lsp' },
           filetypes = { 'yaml' },
+          root_dir = vim.fn.getcwd(),
         }
       end,
     })
