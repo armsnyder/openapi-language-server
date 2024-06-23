@@ -1,2 +1,4 @@
 *.out
 /openapiv3-lsp
+/dist
+/tmp
