@@ -22,16 +22,14 @@ func TestHandler_HandleDefinition(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name:    "file not found",
-			setup:   loadFile("file:///foo", "foo"),
-			params:  definitionParams("file:///bar", "0:0"),
-			wantErr: true,
+			name:   "file not found",
+			setup:  loadFile("file:///foo", "foo"),
+			params: definitionParams("file:///bar", "0:0"),
 		},
 		{
 			name:   "no definition",
 			setup:  loadFile("file:///foo", "foo"),
 			params: definitionParams("file:///foo", "0:0"),
-			want:   nil,
 		},
 		{
 			name: "start of ref",
@@ -90,16 +88,14 @@ func TestHandler_HandleReferences(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name:    "file not found",
-			setup:   loadFile("file:///foo", "foo"),
-			params:  referenceParams("file:///bar", "0:0"),
-			wantErr: true,
+			name:   "file not found",
+			setup:  loadFile("file:///foo", "foo"),
+			params: referenceParams("file:///bar", "0:0"),
 		},
 		{
 			name:   "no references",
 			setup:  loadFile("file:///foo", "foo"),
 			params: referenceParams("file:///foo", "0:0"),
-			want:   nil,
 		},
 		{
 			name: "simple",

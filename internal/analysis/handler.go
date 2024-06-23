@@ -3,6 +3,7 @@ package analysis
 import (
 	"bytes"
 	"fmt"
+	"log"
 
 	"github.com/armsnyder/openapiv3-lsp/internal/analysis/yaml"
 	"github.com/armsnyder/openapiv3-lsp/internal/lsp"
@@ -71,7 +72,8 @@ func (h *Handler) HandleClose(params types.DidCloseTextDocumentParams) error {
 func (h *Handler) HandleChange(params types.DidChangeTextDocumentParams) error {
 	f, ok := h.files[params.TextDocument.URI]
 	if !ok {
-		return fmt.Errorf("unknown file: %s", params.TextDocument.URI)
+		log.Printf("HandleChange: Unknown file %q", params.TextDocument.URI)
+		return nil
 	}
 
 	for _, change := range params.ContentChanges {
@@ -86,7 +88,8 @@ func (h *Handler) HandleChange(params types.DidChangeTextDocumentParams) error {
 func (h *Handler) HandleDefinition(params types.DefinitionParams) ([]types.Location, error) {
 	document, err := h.getDocument(params.TextDocument.URI)
 	if err != nil {
-		return nil, err
+		log.Printf("HandleDefinition: Error getting document %q: %v", params.TextDocument.URI, err)
+		return nil, nil
 	}
 
 	if params.Position.Line >= len(document.Lines) {
@@ -109,7 +112,8 @@ func (h *Handler) HandleDefinition(params types.DefinitionParams) ([]types.Locat
 func (h *Handler) HandleReferences(params types.ReferenceParams) ([]types.Location, error) {
 	document, err := h.getDocument(params.TextDocument.URI)
 	if err != nil {
-		return nil, err
+		log.Printf("HandleReferences: Error getting document %q: %v", params.TextDocument.URI, err)
+		return nil, nil
 	}
 
 	if params.Position.Line >= len(document.Lines) {
