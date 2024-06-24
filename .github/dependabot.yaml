@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/dependabot-2.0.json
+version: 2
+updates:
+  - directory: /
+    package-ecosystem: gomod
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: chore
+      include: scope
+  - directory: /
+    package-ecosystem: github-actions
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: chore
+      include: scope
