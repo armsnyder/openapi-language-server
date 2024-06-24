@@ -12,7 +12,7 @@ editors.](https://microsoft.github.io/language-server-protocol/implementors/tool
 ## Features
 
 I created this language server because I manually edit OpenAPI/Swagger files,
-and I needed a quick way to jump between schema refinitions and references.
+and I needed a quick way to jump between schema definitions and references.
 
 I use
 [yaml-language-server](https://github.com/redhat-developer/yaml-language-server)
