@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/armsnyder/openapiv3-lsp/internal/analysis/yaml"
-	"github.com/armsnyder/openapiv3-lsp/internal/lsp"
-	"github.com/armsnyder/openapiv3-lsp/internal/lsp/types"
+	"github.com/armsnyder/openapi-language-server/internal/analysis/yaml"
+	"github.com/armsnyder/openapi-language-server/internal/lsp"
+	"github.com/armsnyder/openapi-language-server/internal/lsp/types"
 )
 
 // Handler implements the LSP handler for the OpenAPI Language Server. It

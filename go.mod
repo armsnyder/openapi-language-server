@@ -1,4 +1,4 @@
-module github.com/armsnyder/openapiv3-lsp
+module github.com/armsnyder/openapi-language-server
 
 go 1.22.4
 

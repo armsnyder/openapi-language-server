@@ -37,27 +37,28 @@ for me to implement in this language server.
 
 ### From GitHub Releases (Recommended)
 
-Download the latest release from [GitHub releases](https://github.com/armsnyder/openapiv3-lsp/releases).
+Download the latest release from [GitHub releases](https://github.com/armsnyder/openapi-language-server/releases).
 
 ### Using Go
 
 ```bash
-go install github.com/armsnyder/openapiv3-lsp@latest
+go install github.com/armsnyder/openapi-language-server@latest
 ```
 
 ## Usage
 
 ### Neovim Configuration Example
 
-Assuming you are using Neovim and have the installed openapiv3-lsp binary in
-your PATH, you can use the following Lua code to your Neovim configuration:
+Assuming you are using Neovim and have the installed openapi-language-server
+binary in your PATH, you can use the following Lua code to your Neovim
+configuration:
 
 ```lua
     vim.api.nvim_create_autocmd('FileType', {
       pattern = 'yaml',
       callback = function()
         vim.lsp.start {
-          cmd = { 'openapiv3-lsp' },
+          cmd = { 'openapi-language-server' },
           filetypes = { 'yaml' },
           root_dir = vim.fn.getcwd(),
         }

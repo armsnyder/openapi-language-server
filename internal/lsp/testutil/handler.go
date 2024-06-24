@@ -12,7 +12,7 @@ package testutil
 import (
 	reflect "reflect"
 
-	types "github.com/armsnyder/openapiv3-lsp/internal/lsp/types"
+	types "github.com/armsnyder/openapi-language-server/internal/lsp/types"
 	gomock "go.uber.org/mock/gomock"
 )
 

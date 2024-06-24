@@ -9,10 +9,10 @@ import (
 
 	"go.uber.org/mock/gomock"
 
-	. "github.com/armsnyder/openapiv3-lsp/internal/lsp"
-	"github.com/armsnyder/openapiv3-lsp/internal/lsp/jsonrpc"
-	"github.com/armsnyder/openapiv3-lsp/internal/lsp/testutil"
-	"github.com/armsnyder/openapiv3-lsp/internal/lsp/types"
+	. "github.com/armsnyder/openapi-language-server/internal/lsp"
+	"github.com/armsnyder/openapi-language-server/internal/lsp/jsonrpc"
+	"github.com/armsnyder/openapi-language-server/internal/lsp/testutil"
+	"github.com/armsnyder/openapi-language-server/internal/lsp/types"
 )
 
 func TestServer_Basic(t *testing.T) {

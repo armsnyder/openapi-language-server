@@ -6,7 +6,7 @@ import (
 	"io"
 	"strings"
 
-	"github.com/armsnyder/openapiv3-lsp/internal/lsp/types"
+	"github.com/armsnyder/openapi-language-server/internal/lsp/types"
 )
 
 // Document represents a YAML document.

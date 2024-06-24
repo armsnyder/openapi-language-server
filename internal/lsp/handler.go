@@ -1,6 +1,6 @@
 package lsp
 
-import "github.com/armsnyder/openapiv3-lsp/internal/lsp/types"
+import "github.com/armsnyder/openapi-language-server/internal/lsp/types"
 
 // Handler is an interface for handling LSP requests.
 type Handler interface {

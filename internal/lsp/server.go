@@ -8,8 +8,8 @@ import (
 	"io"
 	"log"
 
-	"github.com/armsnyder/openapiv3-lsp/internal/lsp/jsonrpc"
-	"github.com/armsnyder/openapiv3-lsp/internal/lsp/types"
+	"github.com/armsnyder/openapi-language-server/internal/lsp/jsonrpc"
+	"github.com/armsnyder/openapi-language-server/internal/lsp/types"
 )
 
 // Server is an LSP server. It handles the I/O and delegates handling of

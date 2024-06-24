@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"testing"
 
-	. "github.com/armsnyder/openapiv3-lsp/internal/lsp/types"
+	. "github.com/armsnyder/openapi-language-server/internal/lsp/types"
 )
 
 func TestResponseMessage_MarshalJSON(t *testing.T) {

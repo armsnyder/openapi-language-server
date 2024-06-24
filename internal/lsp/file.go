@@ -7,7 +7,7 @@ import (
 	"slices"
 	"unicode/utf8"
 
-	"github.com/armsnyder/openapiv3-lsp/internal/lsp/types"
+	"github.com/armsnyder/openapi-language-server/internal/lsp/types"
 )
 
 // File is a representation of a text file that can be modified by LSP text

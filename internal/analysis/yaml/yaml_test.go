@@ -6,8 +6,8 @@ import (
 	"strconv"
 	"testing"
 
-	. "github.com/armsnyder/openapiv3-lsp/internal/analysis/yaml"
-	"github.com/armsnyder/openapiv3-lsp/internal/lsp/types"
+	. "github.com/armsnyder/openapi-language-server/internal/analysis/yaml"
+	"github.com/armsnyder/openapi-language-server/internal/lsp/types"
 )
 
 func TestParseLine(t *testing.T) {

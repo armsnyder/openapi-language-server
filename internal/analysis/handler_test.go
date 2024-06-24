@@ -7,8 +7,8 @@ import (
 	"strings"
 	"testing"
 
-	. "github.com/armsnyder/openapiv3-lsp/internal/analysis"
-	"github.com/armsnyder/openapiv3-lsp/internal/lsp/types"
+	. "github.com/armsnyder/openapi-language-server/internal/analysis"
+	"github.com/armsnyder/openapi-language-server/internal/lsp/types"
 )
 
 type HandlerSetupFunc func(t *testing.T, h *Handler)

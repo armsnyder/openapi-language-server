@@ -3,13 +3,13 @@ package jsonrpc_test
 import (
 	"bufio"
 	"bytes"
-	"fmt"
 	"io"
+	"strconv"
 	"strings"
 	"testing"
 	"testing/iotest"
 
-	. "github.com/armsnyder/openapiv3-lsp/internal/lsp/jsonrpc"
+	. "github.com/armsnyder/openapi-language-server/internal/lsp/jsonrpc"
 )
 
 func TestSplit(t *testing.T) {
@@ -32,7 +32,7 @@ func TestSplit(t *testing.T) {
 		},
 		{
 			name:  "multiple messages",
-			input: "Content-Length: 17\r\n\r\n{\"jsonrpc\":\"2.0\"}\nContent-Length: 24\r\n\r\n{\"jsonrpc\":\"2.0\",\"id\":1}",
+			input: "Content-Length: 17\r\n\r\n{\"jsonrpc\":\"2.0\"}Content-Length: 24\r\n\r\n{\"jsonrpc\":\"2.0\",\"id\":1}",
 			want: []string{
 				`{"jsonrpc":"2.0"}`,
 				`{"jsonrpc":"2.0","id":1}`,
@@ -68,7 +68,7 @@ func TestSplit(t *testing.T) {
 			}
 
 			for i, r := range readers {
-				t.Run(fmt.Sprintf("reader #%d", i), func(t *testing.T) {
+				t.Run(strconv.Itoa(i), func(t *testing.T) {
 					scanner := bufio.NewScanner(r)
 					scanner.Split(Split)
 

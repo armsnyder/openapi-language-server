@@ -7,9 +7,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/armsnyder/openapiv3-lsp/internal/analysis"
-	"github.com/armsnyder/openapiv3-lsp/internal/lsp"
-	"github.com/armsnyder/openapiv3-lsp/internal/lsp/types"
+	"github.com/armsnyder/openapi-language-server/internal/analysis"
+	"github.com/armsnyder/openapi-language-server/internal/lsp"
+	"github.com/armsnyder/openapi-language-server/internal/lsp/types"
 )
 
 // NOTE(asnyder): version is set by goreleaser using ldflags.
@@ -80,7 +80,7 @@ func main() {
 
 	server := &lsp.Server{
 		ServerInfo: types.ServerInfo{
-			Name:    "openapiv3-lsp",
+			Name:    "openapi-language-server",
 			Version: version,
 		},
 		Reader:  reader,
