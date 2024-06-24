@@ -163,7 +163,7 @@ func TestHandler_HandleChangeThenHandleDefinition(t *testing.T) {
 		t.Fatalf("HandleOpen: %v", err)
 	}
 
-	// Trigger a HandleDefinition call so tha the yaml is parsed once.
+	// Trigger a HandleDefinition call so that the yaml is parsed once.
 
 	if _, err := h.HandleDefinition(types.DefinitionParams{
 		TextDocumentPositionParams: positionParams("file:///foo.yaml", "0:0"),
