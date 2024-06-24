@@ -1,0 +1,2 @@
+# Force crlf on testdata since crlf is part of the JSON-RPC protocol.
+*.jsonrpc eol=crlf

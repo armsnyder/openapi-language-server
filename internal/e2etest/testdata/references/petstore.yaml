@@ -1,0 +1,15 @@
+paths:
+  /pet:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Pet"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/Pet"
+components:
+  schemas:
+    Pet:
+      type: object

@@ -1,0 +1,5 @@
+Content-Length: 225
+
+{"jsonrpc":"2.0","id":1,"result":{"capabilities":{"textDocumentSync":{"openClose":true,"change":2},"definitionProvider":true,"referencesProvider":true},"serverInfo":{"name":"openapi-language-server","version":"development"}}}Content-Length: 38
+
+{"jsonrpc":"2.0","id":2,"result":null}

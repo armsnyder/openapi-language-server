@@ -1,0 +1,9 @@
+Content-Length: 225
+
+{"jsonrpc":"2.0","id":1,"result":{"capabilities":{"textDocumentSync":{"openClose":true,"change":2},"definitionProvider":true,"referencesProvider":true},"serverInfo":{"name":"openapi-language-server","version":"development"}}}Content-Length: 429
+
+{"jsonrpc":"2.0","id":2,"result":[{"uri":"file:///Users/adam/repos/armsnyder/openapi-language-server/internal/e2etest/testdata/references/petstore.yaml","range":{"start":{"line":7,"character":21},"end":{"line":7,"character":45}}},{"uri":"file:///Users/adam/repos/armsnyder/openapi-language-server/internal/e2etest/testdata/references/petstore.yaml","range":{"start":{"line":10,"character":21},"end":{"line":10,"character":45}}}]}Content-Length: 38
+
+{"jsonrpc":"2.0","id":3,"result":null}Content-Length: 38
+
+{"jsonrpc":"2.0","id":4,"result":null}
