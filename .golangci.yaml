@@ -21,6 +21,7 @@ linters:
     - inamedparam # Reports interfaces with unnamed method parameters.
     - ineffassign # Detects when assignments to existing variables are not used.
     - mirror # Reports wrong mirror patterns of bytes/strings usage.
+    - misspell # Finds commonly misspelled English words.
     - musttag # Enforce field tags in (un)marshaled structs.
     - nilerr # Finds the code that returns nil even if it checks that the error is not nil.
     - nilnil # Checks that there is no simultaneous return of nil error and an invalid value.

@@ -1,2 +1,2 @@
-// Package anaylsis contains the OpenAPI Lanuage Server business logic.
+// Package analysis contains the OpenAPI Language Server business logic.
 package analysis
