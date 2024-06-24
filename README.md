@@ -35,7 +35,6 @@ right now.
 - [x] YAML filetype support
 - [ ] JSON filetype support
 - [ ] VSCode extension
-- [ ]
 
 ## Installation
 
