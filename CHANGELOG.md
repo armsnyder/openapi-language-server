@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/armsnyder/openapi-language-server/compare/v0.2.0...v0.2.1) (2024-06-24)
+
+
+### Bug Fixes
+
+* fix a bug where the internal document model was not updating after file changes ([54d51dc](https://github.com/armsnyder/openapi-language-server/commit/54d51dce5c4322871f55d2751a0cf6d6c51b04a8))
+
 ## [0.2.0](https://github.com/armsnyder/openapi-language-server/compare/v0.1.1...v0.2.0) (2024-06-24)
 
 
