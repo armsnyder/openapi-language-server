@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.0](https://github.com/armsnyder/openapi-language-server/compare/v0.1.1...v0.2.0) (2024-06-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* rename project to openapi-language-server
+
+### Features
+
+* rename project to openapi-language-server ([719953a](https://github.com/armsnyder/openapi-language-server/commit/719953a15c301b8dc6d41cf814188f378a9f8d68))
+
 ## [0.1.1](https://github.com/armsnyder/openapi-language-server/compare/v0.1.0...v0.1.1) (2024-06-24)
 
 ### Bug Fixes
