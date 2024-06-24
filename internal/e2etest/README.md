@@ -1,6 +1,6 @@
 # End to end tests
 
-The **/testdata** directory contains a et of subdirectories, each of which is
+The **/testdata** directory contains a set of subdirectories, each of which is
 an end-to-end test scenario.
 
 ## Running the tests

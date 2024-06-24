@@ -1,20 +1,23 @@
 # OpenAPI Language Server
 
-This is a language server for OpenAPI v3. It is based on the [Language
-Server Protocol](https://microsoft.github.io/language-server-protocol/).
+An OpenAPI language server for [LSP compatible code
+editors.](https://microsoft.github.io/language-server-protocol/implementors/tools/)
+
+> :warning: This is beta software. Many features are still missing. See
+> [Features](https://github.com/armsnyder/openapi-language-server?tab=readme-ov-file#features)
+> below.
 
 [![asciicast](https://asciinema.org/a/v7etZb80HbYkKBQUa3dVSenPz.svg)](https://asciinema.org/a/v7etZb80HbYkKBQUa3dVSenPz)
 
-I created this language server because I do a lot of manual OpenAPI/Swagger
-file editing, and I wanted a quick way to jump to definitions and find
-references of schema definitions.
-
-I personally use
-[yaml-language-server](https://github.com/redhat-developer/yaml-language-server)
-for schema validation and code completion, so these features are not a priority
-for me to implement in this language server.
-
 ## Features
+
+I created this language server because I manually edit OpenAPI/Swagger files,
+and I needed a quick way to jump between schema refinitions and references.
+
+I use
+[yaml-language-server](https://github.com/redhat-developer/yaml-language-server)
+for validation and completion, so these features are not a priority for me
+right now.
 
 ### Language Features
 
@@ -32,6 +35,7 @@ for me to implement in this language server.
 - [x] YAML filetype support
 - [ ] JSON filetype support
 - [ ] VSCode extension
+- [ ]
 
 ## Installation
 
@@ -50,7 +54,7 @@ go install github.com/armsnyder/openapi-language-server@latest
 ### Neovim Configuration Example
 
 Assuming you are using Neovim and have the installed openapi-language-server
-binary in your PATH, you can use the following Lua code to your Neovim
+binary in your PATH, you can use the following Lua code in your Neovim
 configuration:
 
 ```lua
