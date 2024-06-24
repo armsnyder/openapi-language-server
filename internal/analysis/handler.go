@@ -82,6 +82,8 @@ func (h *Handler) HandleChange(params types.DidChangeTextDocumentParams) error {
 		}
 	}
 
+	f.document = yaml.Document{}
+
 	return nil
 }
 

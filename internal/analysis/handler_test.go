@@ -147,6 +147,60 @@ bar:
 	}
 }
 
+func TestHandler_HandleChangeThenHandleDefinition(t *testing.T) {
+	var h Handler
+
+	// The file starts with only a definition.
+
+	if err := h.HandleOpen(types.DidOpenTextDocumentParams{
+		TextDocument: types.TextDocumentItem{
+			URI: "file:///foo.yaml",
+			Text: `bar:
+  baz:
+    type: object`,
+		},
+	}); err != nil {
+		t.Fatalf("HandleOpen: %v", err)
+	}
+
+	// Trigger a HandleDefinition call so tha the yaml is parsed once.
+
+	if _, err := h.HandleDefinition(types.DefinitionParams{
+		TextDocumentPositionParams: positionParams("file:///foo.yaml", "0:0"),
+	}); err != nil {
+		t.Fatalf("HandleDefinition: %v", err)
+	}
+
+	// Add the reference to the file.
+
+	if err := h.HandleChange(types.DidChangeTextDocumentParams{
+		TextDocument: types.TextDocumentIdentifier{URI: "file:///foo.yaml"},
+		ContentChanges: []types.TextDocumentContentChangeEvent{{
+			Text: `foo:
+  $ref: "#/bar/baz"
+`,
+			Range: toPtr(newRange("0:0-0:0")),
+		}},
+	}); err != nil {
+		t.Fatalf("HandleChange: %v", err)
+	}
+
+	// Now that the reference has been added, we should be able to find the
+	// definition.
+
+	got, err := h.HandleDefinition(types.DefinitionParams{
+		TextDocumentPositionParams: positionParams("file:///foo.yaml", "1:8"),
+	})
+	if err != nil {
+		t.Fatalf("HandleDefinition: %v", err)
+	}
+
+	want := locations("file:///foo.yaml", "3:2-3:5")
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("HandleDefinition() = %v, want %v", got, want)
+	}
+}
+
 func loadFile(uri, text string) HandlerSetupFunc {
 	return func(t *testing.T, h *Handler) {
 		if err := h.HandleOpen(types.DidOpenTextDocumentParams{
@@ -196,27 +250,35 @@ func positionParams(uri, position string) types.TextDocumentPositionParams {
 	}
 }
 
-func locations(uri string, ranges ...string) []types.Location {
-	pat := regexp.MustCompile(`^(\d+):(\d+)-(\d+):(\d+)$`)
-	locs := make([]types.Location, len(ranges))
-	for i, rng := range ranges {
-		match := pat.FindStringSubmatch(rng)
-		if match == nil {
-			panic("invalid range")
-		}
+func newRange(r string) types.Range {
+	match := regexp.MustCompile(`^(\d+):(\d+)-(\d+):(\d+)$`).FindStringSubmatch(r)
+	if match == nil {
+		panic("invalid range")
+	}
 
+	return types.Range{
+		Start: types.Position{
+			Line:      mustAtoi(match[1]),
+			Character: mustAtoi(match[2]),
+		},
+		End: types.Position{
+			Line:      mustAtoi(match[3]),
+			Character: mustAtoi(match[4]),
+		},
+	}
+}
+
+func toPtr[T any](v T) *T {
+	return &v
+}
+
+func locations(uri string, ranges ...string) []types.Location {
+	locs := make([]types.Location, len(ranges))
+
+	for i, rng := range ranges {
 		locs[i] = types.Location{
-			URI: uri,
-			Range: types.Range{
-				Start: types.Position{
-					Line:      mustAtoi(match[1]),
-					Character: mustAtoi(match[2]),
-				},
-				End: types.Position{
-					Line:      mustAtoi(match[3]),
-					Character: mustAtoi(match[4]),
-				},
-			},
+			URI:   uri,
+			Range: newRange(rng),
 		}
 	}
 
