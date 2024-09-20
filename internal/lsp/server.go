@@ -26,6 +26,7 @@ type Server struct {
 // if the server stops unexpectedly.
 func (s *Server) Run() error {
 	scanner := bufio.NewScanner(s.Reader)
+	scanner.Buffer(nil, 10*1024*1024)
 	scanner.Split(jsonrpc.Split)
 
 	log.Println("LSP server started")
