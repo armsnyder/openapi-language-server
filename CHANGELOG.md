@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2](https://github.com/armsnyder/openapi-language-server/compare/v0.2.1...v0.2.2) (2024-09-20)
+
+
+### Bug Fixes
+
+* Increase max file size from 64 KiB to 10 MiB ([c1ddaaa](https://github.com/armsnyder/openapi-language-server/commit/c1ddaaa5951a4b0a9a0124b2243b35b6e124f8e6))
+
 ## [0.2.1](https://github.com/armsnyder/openapi-language-server/compare/v0.2.0...v0.2.1) (2024-06-24)
 
 
