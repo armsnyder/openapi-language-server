@@ -323,6 +323,30 @@ components:
 	}
 }
 
+func TestRefs_BlankLineBetweenSchemas(t *testing.T) {
+	document, err := Parse(bytes.NewReader([]byte(`openapi: 3.0.0
+components:
+  schemas:
+    Foo:
+      type: object
+
+    Bar:
+      type: object
+`)))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	for _, ref := range []string{
+		"#/components/schemas/Foo",
+		"#/components/schemas/Bar",
+	} {
+		if document.Locate(ref) == nil {
+			t.Errorf("could not locate %s", ref)
+		}
+	}
+}
+
 func TestParse_PetStore(t *testing.T) {
 	f, err := os.Open("testdata/petstore.yaml")
 	if err != nil {

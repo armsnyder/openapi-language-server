@@ -88,6 +88,12 @@ func Parse(r io.Reader) (Document, error) {
 		line := parseLine(scanner.Bytes(), lineNum)
 		document.Lines = append(document.Lines, line.line)
 
+		// A blank line parses as indent 0, which would reset the parent
+		// stack and orphan everything below it in the same mapping.
+		if len(bytes.TrimSpace(scanner.Bytes())) == 0 {
+			continue
+		}
+
 		for len(parentStack) > 0 && parentStack[len(parentStack)-1].indent >= line.indent {
 			parentStack = parentStack[:len(parentStack)-1]
 		}
